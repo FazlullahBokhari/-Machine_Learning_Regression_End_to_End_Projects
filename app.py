@@ -1,6 +1,5 @@
 from flask import Flask 
 import numpy as np
-import tensorflow as tf
 
 app = Flask(__name__)
 
