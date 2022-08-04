@@ -106,12 +106,13 @@ celerybeat.pid
 .env
 .Rgressor
 env/
+Rgressor/
+Rgressor.bak
 venv/
 ENV/
 env.bak/
 venv.bak/
-Rgressor/
-Rgressor.bak
+
 
 # Spyder project settings
 .spyderproject
