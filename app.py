@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/",methods=['GET','POST'])
 def index():
-    return "Machine Learning Pipeline created"
+    return "Machine Learning Pipeline created CI/CD pipline"
 
 
 if __name__ == "__main__":
