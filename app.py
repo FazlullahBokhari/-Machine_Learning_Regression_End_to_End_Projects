@@ -14,6 +14,6 @@ if __name__ == "__main__":
 
 
 #email = fazlullahb@gmail.com
-#api = ee45e5c4-24ed-4f15-b246-28d1af388c87
+#api = <>
 #name = machine-learn-regression-model
 
