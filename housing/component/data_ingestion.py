@@ -92,6 +92,8 @@ class DataIngestion:
                 strat_train_set = housing_data_frame.loc[train_index].drop(['income_cat'], axis=1)
                 strat_test_set = housing_data_frame.loc[test_index].drop(['income_cat'], axis=1) 
                 
+            train_file_path = os.path.join(self.data_ingestion_config.ingested_train_dir,file_name)
+            test_file_path = os.path.join(self.data_ingestion_config.ingested_test_dir, file_name) 
             
             
         except Exception as e: 
