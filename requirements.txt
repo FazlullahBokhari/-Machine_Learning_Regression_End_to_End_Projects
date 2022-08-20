@@ -4,4 +4,3 @@ gunicorn
 sklearn 
 pandas 
 PyYAML 
--e . 
