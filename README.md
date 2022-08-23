@@ -13,7 +13,7 @@
 
 Creating conda environment
 ```
-conda create -p venv python==3.7 -y
+conda create -p venv python==3.10.4 -y
 ```
 ```
 conda activate venv/
@@ -106,3 +106,7 @@ Install ipykernel
 pip install ipykernel
 
 ```
+
+Data Drift:
+When dataset stats gests changes we call it as data drift 
+
