@@ -1,7 +1,8 @@
 from housing.logger import logging 
 from housing.exception import HousingException 
 from housing.entity.config_entity import DataValidationConfig 
-from housing.entity.artifact_entity import DataIngestionArtifact 
+from housing.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
+
 import os, sys 
 import pandas as pd
 from evidently.model_profile import Profile 
@@ -38,8 +39,8 @@ class DataValidation:
             
             logging.info("Checking if training and test file is available ")
             
-            train_file_path = self.data_ingestion_artifact.train_file_exist 
-            test_file_path = self.data_ingestion_artifact.test_file_exist  
+            train_file_path = self.data_ingestion_artifact.train_file_path
+            test_file_path = self.data_ingestion_artifact.test_file_path
             
             is_train_file_exist = os.path.exists(train_file_path) 
             is_test_file_exist = os.path.exists(test_file_path)  
@@ -60,6 +61,7 @@ class DataValidation:
             return is_available 
         except Exception as e:
             raise HousingException(e,sys) from e 
+    
         
     def validate_dataset_schema(self)-> bool:
         try:
@@ -82,7 +84,11 @@ class DataValidation:
             
             report = json.loads(profile.json()) 
             
-            with open(self.data_validation_config.report_file_path,'w') as report_file:
+            report_file_path = self.data_validation_config.report_file_path   
+            report_dir = os.path.dirname(report_file_path)  
+            os.makedirs(report_dir,exist_ok=True) 
+            
+            with open(report_file_path,"w") as report_file:
                 json.dump(report, report_file, indent=6) 
                 
             return report
@@ -96,9 +102,13 @@ class DataValidation:
             
             train_df, test_df = self.get_train_and_test_df() 
             
-            dashboard.calculate(train_df,test_df) 
+            dashboard.calculate(train_df,test_df)  
             
-            dashboard.save(self.data_validation_config.report_page_file_path) 
+            report_page_file_path = self.data_validation_config.report_page_file_path 
+            report_page_dir = os.path.dirname(report_page_file_path)  
+            os.makedirs(report_page_dir,exist_ok=True) 
+            
+            dashboard.save(report_page_file_path) 
             
         except Exception as e:
             raise HousingException(e,sys) from e
@@ -119,5 +129,16 @@ class DataValidation:
             self.is_train_test_file_exists() 
             self.validate_dataset_schema() 
             self.is_data_drift_found() 
+            
+            data_validation_artifact = DataValidationArtifact(
+                schema_file_path=self.data_validation_config.schema_file_path,
+                report_file_path=self.data_validation_config.report_file_path,
+                report_page_file_path=self.data_validation_config.report_page_file_path,
+                is_validated=True,
+                message="Data Validation performed successfully"
+            )
+            
+            logging.info(f"Data Validation artifact: {data_validation_artifact}")
+            
         except Exception as e:
             raise HousingException(e,sys) from e
