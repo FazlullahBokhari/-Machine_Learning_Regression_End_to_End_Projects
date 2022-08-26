@@ -110,3 +110,6 @@ pip install ipykernel
 Data Drift:
 When dataset stats gests changes we call it as data drift 
 
+
+https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning
+
