@@ -3,7 +3,8 @@ from housing.logger import logging
 from housing.entity.config_entity import DataIngestionConfig, DataTransformationConfig 
 from housing.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
 import os, sys 
-
+import numpy as np 
+from sklearn.base import BaseEstimator, TransformerMixin 
 
 
 
