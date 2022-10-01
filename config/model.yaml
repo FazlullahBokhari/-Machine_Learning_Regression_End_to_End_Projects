@@ -24,10 +24,9 @@ model_selection:
       min_samples_leaf: 2
     search_param_grid:
       min_samples_leaf:
-      - 2
       - 4
       - 6
+      - 12
       n_estimators:
-      - 50
       - 100
-      - 80
+      - 200
