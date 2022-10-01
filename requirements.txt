@@ -1,8 +1,10 @@
-Flask
 numpy
+Flask
 gunicorn
-sklearn 
-pandas 
+sklearn
+pandas
+PyYAML
 evidently
-dill 
-PyYAML 
+dill
+matplotlib
+-e .

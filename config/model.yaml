@@ -9,24 +9,16 @@ model_selection:
     class: LinearRegression
     module: sklearn.linear_model
     params:
-      fit_intercept: True
-      
+      fit_intercept: true
     search_param_grid:
-      paramfit_intercept_name:
-      - True
-      - False
-
+      fit_intercept:
+      - true
+      - false
   module_1:
     class: RandomForestRegressor
     module: sklearn.ensemble
     params:
-      n_estimators: 20
-      min_samples_leaf: 2
+      min_samples_leaf: 3
     search_param_grid:
       min_samples_leaf:
-      - 4
       - 6
-      - 12
-      n_estimators:
-      - 100
-      - 200

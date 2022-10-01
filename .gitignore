@@ -1,12 +1,11 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-__pycache__
 *.py[cod]
 *$py.class
-
+saved_models/*
 # C extensions
 *.so
-
+housing/artifact
 # Distribution / packaging
 .Python
 build/
@@ -55,7 +54,7 @@ coverage.xml
 # Translations
 *.mo
 *.pot
-
+.idea/*
 # Django stuff:
 *.log
 local_settings.py
@@ -104,15 +103,12 @@ celerybeat.pid
 
 # Environments
 .env
-.Rgressor
+.venv
 env/
-Rgressor/
-Rgressor.bak
 venv/
 ENV/
 env.bak/
 venv.bak/
-
 
 # Spyder project settings
 .spyderproject
